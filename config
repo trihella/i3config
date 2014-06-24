@@ -26,7 +26,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec "urxvt -fn 'xft:Ubuntu Mono:pixelsize=14,style=regular'"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -41,10 +41,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run -b -nb '#111111' -nf '#555555' -sb
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+n focus left
+bindsym $mod+r focus down
+bindsym $mod+s focus up
+bindsym $mod+c focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -53,10 +53,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+#bindsym $mod+Shift+n move left
+#bindsym $mod+Shift+r move down
+#bindsym $mod+Shift+s move up
+#bindsym $mod+Shift+c move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -74,7 +74,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+u layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -115,9 +115,9 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+x reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+o restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -145,16 +145,20 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+# class border backgr. text indicator
 #class                  border   backgr.  text
-client.focused          #AD6450 #AD6450  #111111
-client.focused_inactive #111111 #111111 #999999
-client.unfocused        #222222 #222222 #999999
+client.focused          #859900 #859900 #fdf6e3 
+client.focused_inactive #268bd2 #268bd2 #fdf6e3 
+client.unfocused        #333333 #93a1a1 #fdf6e3 
+#client.focused          #AD6450 #6c71c4 #002b36
+#client.focused_inactive #111111 #111111 #002b36
+#client.unfocused        #222222 #222222 #999999
 client.urgent           #a5a5a5 #a5a5a5 #2e3436
 client.background       #161616
 
-bindsym $mod+r mode "resize"
+bindsym $mod+o mode "resize"
 
-# VOLUME ADJUSTMENT
+# Volume adjustment
 bindsym XF86AudioRaiseVolume exec "amixer sset Master '3%+'"
 bindsym XF86AudioLowerVolume exec "amixer sset Master '1%-'"
 bindsym XF86AudioMute exec "amixer set Master toggle"
@@ -166,25 +170,30 @@ bindsym XF86AudioMute exec "amixer set Master toggle"
 # finds out, if available)
 bar {
         status_command $HOME/custom_bin/conky-i3bar
-        tray_output none
+        #tray_output none
         position top
         mode dock
 #       font pango:fixed 6
 #       font pango:Droid Sans Bold 10px
         font -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 #       font pango:Consolas Bold 9px
+#       Solarized colorscheme
         colors {
-                background #161616
+                background #002b36
                 statusline #605c5a
                 # class            border   backgrd  text
-                focused_workspace  #161616  #5099AD  #ffffff
-                active_workspace   #161616  #161616  #a5a5a5
-                inactive_workspace #161616  #545454  #a5a5a5
-                urgent_workspace   #161616  #545454  #a5a5a5
+                focused_workspace  #002b36 #cb4b16 #eee8d5
+                active_workspace   #002b36 #cb4b16 #eee8d5
+                inactive_workspace #002b36 #b58900 #eee8d5
+                urgent_workspace   #002b36 #545454  #a5a5a5
         }
 }
+
+# Bar 2
 #bar {
 #        status_command i3status
+#        workspace_buttons no
+#        position bottom
 #}
 
 # Autostart programs

@@ -14,12 +14,12 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# font -*-montecarlo-medium-r-normal-*-11-*-*-*-*-*-*-*
+#font -*-montecarlo-medium-r-normal-*-11-*-*-*-*-*-*-*
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -44,7 +44,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run -b -nb '#111111' -nf '#555555' -sb
 bindsym $mod+n focus left
 bindsym $mod+r focus down
 bindsym $mod+s focus up
-bindsym $mod+c focus right
+bindsym $mod+t focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -53,10 +53,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-#bindsym $mod+Shift+n move left
-#bindsym $mod+Shift+r move down
-#bindsym $mod+Shift+s move up
-#bindsym $mod+Shift+c move right
+bindsym $mod+Shift+t move left
+bindsym $mod+Shift+r move down
+bindsym $mod+Shift+s move up
+bindsym $mod+Shift+n move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -129,16 +129,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym n resize shrink width 10 px or 10 ppt
-        bindsym r resize grow height 10 px or 10 ppt
-        bindsym s resize shrink height 10 px or 10 ppt
-        bindsym t resize grow width 10 px or 10 ppt
+        bindsym n resize shrink width 5 px or 5 ppt
+        bindsym r resize grow height 5 px or 5 ppt
+        bindsym s resize shrink height 5 px or 5 ppt
+        bindsym t resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -148,8 +148,8 @@ mode "resize" {
 # class border backgr. text indicator
 #class                  border   backgr.  text
 client.focused          #859900 #859900 #fdf6e3 
-client.focused_inactive #268bd2 #268bd2 #fdf6e3 
-client.unfocused        #333333 #93a1a1 #fdf6e3 
+client.focused_inactive #268bd2 #1E1E1E #fdf6e3 
+client.unfocused        #333333 #1E1E1E #fdf6e3 
 #client.focused          #AD6450 #6c71c4 #002b36
 #client.focused_inactive #111111 #111111 #002b36
 #client.unfocused        #222222 #222222 #999999
@@ -170,21 +170,17 @@ bindsym XF86AudioMute exec "amixer set Master toggle"
 # finds out, if available)
 bar {
         status_command $HOME/custom_bin/conky-i3bar
-        #tray_output none
         position top
         mode dock
-#       font pango:fixed 6
-#       font pango:Droid Sans Bold 10px
-        font -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
-#       font pango:Consolas Bold 9px
-#       Solarized colorscheme
+        font -*-montecarlo-medium-r-normal-*-11-*-*-*-*-*-*-*
+        # Solarized colorscheme
         colors {
-                background #002b36
+                background #383838
                 statusline #605c5a
                 # class            border   backgrd  text
-                focused_workspace  #002b36 #cb4b16 #eee8d5
+                focused_workspace  #002b36 #5099AD #eee8d5
                 active_workspace   #002b36 #cb4b16 #eee8d5
-                inactive_workspace #002b36 #b58900 #eee8d5
+                inactive_workspace #002b36 #545454  #a5a5a5
                 urgent_workspace   #002b36 #545454  #a5a5a5
         }
 }
